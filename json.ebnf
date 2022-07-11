@@ -1,0 +1,13 @@
+json = value ;
+# ----- values -----
+value = ws , ( object | array | number | string | "true" | "false" | "null" ) , ws ;
+object = ws , "{" , { string , ":" , value } , "}" , ws ;
+array = ws , "[" , [ value ] , { "," , value } , "]" , ws ;
+number = ws , [ "-" ] , ( "0" | ( digit - "0" ) , { digit } ) , [ "." , digit , { digit } ] , [ ( "e" | "E" ) , [ "+" | "-" ] , digit , { digit } ] , ws ;
+string = ws , '"' , { ( unichar - '"' - "\\" - ctrlchar ) | ( "\\" , ( '"' | "\\" | "/" | "b" | "f" | "n" | "r" | "t" | ( "u" , hexdigit * 4 ) ) ) } , '"' , ws ;
+# ----- idents -----
+digit = "0" | "1" | ... | "9" ; # [0-9]
+hexdigit = digit | "a" | "b" | ... | "f" | "A" | "B" | ... | "F" ; # [0-9a-fA-F]
+unichar = "\u0000" | "\u0001" | ... | "\u{0010ffff}" ; # all unicode characters
+ctrlchar = "\u0000" | "\u0001" | ... | "\u001f" ; # [\x00-\x1f]
+ws = { "\t" | "\n" | "\r" | " " } ;

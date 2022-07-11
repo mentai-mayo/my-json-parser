@@ -1,0 +1,6 @@
+_*
+dist
+*.pdf
+tsbuild
+test.mjs
+node_modules

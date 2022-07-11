@@ -1,0 +1,17 @@
+{
+  "name": "mentai-mayo",
+  "isOutdoor": false,
+  "isSleepy": true,
+  "address": null,
+  "myYens": 5124,
+  "like": [
+    "c/c++",
+    "JavaScript",
+    "TypeScript"
+  ],
+  "room": {
+    "temp-c": 292e-1,
+    "temp-f": 8.456e+1,
+    "A/C": -0
+  }
+}

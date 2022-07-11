@@ -1,0 +1,29 @@
+{
+  "name": "my-json-parser",
+  "version": "0.1.0",
+  "description": "typescript製 json/jsonc/json5 パーサ",
+  "scripts": {
+    "build:tsc": "npx tsc",
+    "build:webpack": "npx webpack --entry ./webpack.entry.mjs --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mentai-mayo/my-json-parser.git"
+  },
+  "keywords": [
+    "typescript",
+    "json",
+    "webpack"
+  ],
+  "author": "mentai-mayo",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/mentai-mayo/my-json-parser/issues"
+  },
+  "homepage": "https://github.com/mentai-mayo/my-json-parser#readme",
+  "devDependencies": {
+    "typescript": "^4.7.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
+}

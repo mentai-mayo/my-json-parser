@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "es2022",
+    "outDir": "./tsbuild",
+    "incremental": true,
+    "removeComments": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "declaration": true,
+  },
+  "include": [
+    "source/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "tsbuild",
+  ],
+}
