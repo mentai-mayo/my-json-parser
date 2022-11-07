@@ -1,13 +1,15 @@
-json = value ;
+json = ws , value , ws ;
 # ----- values -----
-value = ws , ( object | array | number | string | "true" | "false" | "null" ) , ws ;
-object = ws , "{" , { string , ":" , value } , "}" , ws ;
-array = ws , "[" , [ value ] , { "," , value } , "]" , ws ;
-number = ws , [ "-" ] , ( "0" | ( digit - "0" ) , { digit } ) , [ "." , digit , { digit } ] , [ ( "e" | "E" ) , [ "+" | "-" ] , digit , { digit } ] , ws ;
-string = ws , '"' , { ( unichar - '"' - "\\" - ctrlchar ) | ( "\\" , ( '"' | "\\" | "/" | "b" | "f" | "n" | "r" | "t" | ( "u" , hexdigit * 4 ) ) ) } , '"' , ws ;
-# ----- idents -----
-digit = "0" | "1" | ... | "9" ; # [0-9]
-hexdigit = digit | "a" | "b" | ... | "f" | "A" | "B" | ... | "F" ; # [0-9a-fA-F]
-unichar = "\u0000" | "\u0001" | ... | "\u{0010ffff}" ; # all unicode characters
-ctrlchar = "\u0000" | "\u0001" | ... | "\u001f" ; # [\x00-\x1f]
+value = ( object | array | number | string | boolean | null ) ;
+object = "{" , ws , [ string , ws , ":" , ws , value , { ws , "," , ws , string , ws , ":" , ws , value } , ws ] , "}" ;
+array = "[" , ws , [ value, { ws , value } , ws ] , "]" ;
+number = [ "-" ] , ( "0" | ( digit1to9 , { digit } ) , [ "." , { digit } ] , [ ( "e" | "E" ) , [ "+" , "-" ] , { digit } ] ) ;
+string = "\"" , { unichar | ( "\\" | ( "\"" | "\\" | "\/" | "b" | "f" | "n" | "r" | "t" | ( "u" , hexdigit , hexdigit , hexdigit , hexdigit ) ) ) } , "\"" ;
+boolean = "true" | "false" ;
+null = "null" ;
+# ----- other -----
 ws = { "\t" | "\n" | "\r" | " " } ;
+digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+digit1to9 = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+unichar = "\u0020" | "\u0021" | ... | "\u005b" | "\u005d" | "\u005e" | ... | "\uffff" ;
+hexdigit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "a" | "b" | "c" | "d" | "e" | "f" | "A" | "B" | "C" | "D" | "E" | "F" ;
